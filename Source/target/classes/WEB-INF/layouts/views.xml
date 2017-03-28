@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+   <!-- Login & Register  -->
+   
+   
+    <definition name="init" extends="MasterPageLogin">
+		<put-attribute name="bodySite" value="/WEB-INF/views/MasterLogin/init.jsp"></put-attribute>
+	</definition>
+    
+    <definition name="login" extends="MasterPageLogin">
+		<put-attribute name="bodySite" value="/WEB-INF/views/MasterLogin/login.jsp"></put-attribute>
+	</definition>
+    
+    
+       <definition name="registrationByCode" extends="MasterPageLogin">
+      <put-attribute name="bodySite" value="/WEB-INF/views/MasterLogin/registrationByCode.jsp"></put-attribute>
+    
+    </definition>
+    
+    <definition name="registrationByLicense" extends="MasterPageLogin">
+      <put-attribute name="bodySite" value="/WEB-INF/views/MasterLogin/registrationByLicense.jsp"></put-attribute>
+    
+    </definition>
+    
+     <definition name="registrationActiveByEmail" extends="MasterPageLogin">
+      <put-attribute name="bodySite" value="/WEB-INF/views/MasterLogin/registrationActiveByEmail.jsp"></put-attribute>
+    </definition>
+    
+    <definition name="registrationPreActive" extends="MasterPageLogin">
+      <put-attribute name="bodySite" value="/WEB-INF/views/MasterLogin/registrationPreActive.jsp"></put-attribute>
+    </definition>
+    
+    
+    <definition name="profile" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/MasterLogin/profile.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="doctorOffice" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/MasterLogin/doctorOffice.jsp"></put-attribute>
+	</definition>
+
+	<!--START SEARCH -->
+	
+	<definition name="home" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/home.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="pubmed" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/pubmed.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="buscador" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/drug.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="medicamentos-busqueda" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/drug.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="medicamentos-sustancia" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/drug.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="medicamentos-laboratorio" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/drug.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="medicamentos-cie" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/drug.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="medicamentos-atc" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/drug.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="guias-clinicas-busqueda" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/medicalguides.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="descripcion-medicamento" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/productDetail.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="sustancias" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/substance.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="laboratorios" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/labs.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="cie" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/icd.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="atc" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/atc.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="medicamentos" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/drug.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="guias-clinicas" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/medicalguides.jsp"></put-attribute>
+	</definition>
+	
+	<!-- END SEARCH -->
+	
+	<!-- START ENCICLOPEDIAS -->
+	<definition name="menu-encyclopedias" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/encyclopedia.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="all-encyclopedias" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/encyclopedias/categoryEncyclopedia.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="detail-encyclopedia" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/encyclopedias/detailEncyclopedia.jsp"></put-attribute>
+	</definition>
+
+	<definition name="attribute-symptom" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/encyclopedias/detailSymptoms.jsp"></put-attribute>
+	</definition>
+	
+	<!-- END -->
+	
+	<!-- START PRESCRIPTION -->
+	<definition name="interacciones" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/interactions.jsp"></put-attribute>
+	</definition>
+	<!-- END PRESCRIPTION -->
+	<!-- START CLINICAL-REPORT -->
+	<definition name="clinicalReport" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/clinical-report.jsp"></put-attribute>
+	</definition>
+    <definition name="clinical-report-history" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/clinical-report-history.jsp"></put-attribute>
+	</definition>
+	<!-- END CLINICAL-REPORT -->
+	
+	<!-- START MEDICAL-PRESCRIPTION -->
+	<definition name="medical-prescription" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/medical-prescription.jsp"></put-attribute>
+	</definition>
+	<definition name="prescriptionHistory" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/prescriptionHistory.jsp"></put-attribute>
+	</definition>
+	<!-- END MEDICAL-PRESCRIPTION -->
+	
+	<!-- START CALCULADORAS -->
+	  
+	<definition name="indice-de-masa-corporal" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/indice-Masa-Corporal.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="osmolaridad-plasmatica" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/osmolaridad-plasmatica.jsp"></put-attribute>
+	</definition>
+
+   <definition name="conversion-microgotas-a-mililitros" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/microgotas-a-mililitros.jsp"></put-attribute>
+	</definition>
+	
+	 <definition name="conversion-mililitros-a-microgotas" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/mililitros-a-microgotas.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="conversion-mililitros-minuto-a-microgotas-hora" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/mililitros-minuto-a-microgotas-hora.jsp"></put-attribute>
+	</definition>
+	<definition name="superficie-corporal" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/superficie-corporal.jsp"></put-attribute>
+	</definition>
+	<definition name="aclaramiento-de-creatinina" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/aclaramiento-de-creatinina.jsp"></put-attribute>
+	</definition>
+	<definition name="excrecion-de-creatinina" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/excrecion-de-creatinina.jsp"></put-attribute>
+	</definition>
+	<definition name="conversion-de-g-l-a-mg-dl" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/g-l-a-mg-dl.jsp"></put-attribute>
+	</definition>
+	<definition name="conversion-de-mg-dl-a-g-l" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/mg-dl-a-g-l.jsp"></put-attribute>
+	</definition>
+	<definition name="fraccion-de-excrecion-de-sodio" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/fraccion-de-excrecion-de-sodio.jsp"></put-attribute>
+	</definition>
+	<definition name="gradiente-transtubular-de-potasio" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/gradiente-transtubular-de-potasio.jsp"></put-attribute>
+	</definition>
+	<definition name="tasa-de-metabolismo-basal" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/tasa-de-metabolismo-basal.jsp"></put-attribute>
+	</definition>
+	<definition name="presion-arterial-media" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/presion-arterial-media.jsp"></put-attribute>
+	</definition>
+	<definition name="concentracion-total-del-calcio-corregida" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/concentracion-total-del-calcio-corregida.jsp"></put-attribute>
+	</definition>
+	<definition name="curvas-de-crecimiento-y-desarrollo-en-pediatria" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/calculators/curvas-de-crecimiento-desarrollo.jsp"></put-attribute>
+	</definition>
+	<!-- END CALCULADORAS -->
+	
+	<!-- END SEARCH -->
+	
+	<!-- START ABSTRACTS -->
+	<definition name="abstracts" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/abstracts.jsp"></put-attribute>
+	</definition>
+	
+	<!-- END ABSTRACTS -->
+	
+	<!-- Start Error -->
+	<definition name="error" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/error.jsp"></put-attribute>
+	</definition>
+	<!-- End Error -->
+	
+	<definition name="farmacovigilancia" extends="MasterPageSite">
+		<put-attribute name="bodySite" value="/WEB-INF/views/farmacovigilancia.jsp"></put-attribute>
+	</definition>
+	
+</tiles-definitions>
+

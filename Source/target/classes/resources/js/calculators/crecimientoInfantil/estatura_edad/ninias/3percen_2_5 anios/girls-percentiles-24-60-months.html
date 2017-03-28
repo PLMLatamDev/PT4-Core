@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>PLM</title>
+
+ 	<style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            border: 0;
+            overflow: hidden; /*  Disable scrollbars */
+            display: block;  /* No floating content on sides */
+        }
+    </style>
+
+</head>
+<body>
+	<canvas id="chartCanvas" style ="position: absolute; left: 0px; top: 0px;"></canvas>
+	
+	<script>
+    	(function() {
+    	
+    		var htmlCanvas = document.getElementById('chartCanvas');
+    		var contextCanvas = htmlCanvas.getContext('2d');
+    		
+    		/*********************************************************
+    		 *
+    		 * Constant values. 
+    		 *
+    		 *********************************************************/
+    		
+    		// This variables are with respect the canvas and chart area:
+    		var PERCENTAGE_CANVAS_SIZE = 1.00;
+    		var PERCENTAGE_CHART_LEFT = 0.12;
+    		var PERCENTAGE_CHART_RIGHT = 0.08;
+    		var PERCENTAGE_CHART_UP = 0.17;
+    		var PERCENTAGE_CHART_DOWN = 0.13;
+    		var BKGCOLOR_CHART = '#E57EB3'; 
+    		var FORE_COLOR_CHART = '#FFFFFF';
+    		
+    		// This variables are with respect the outer rectangle: 
+    		var PERCENTAGE_BKG_LEFT = 0.90;
+    		var PERCENTAGE_BKG_RIGHT = 0.80;
+            var PERCENTAGE_BKG_UP = 0.22;
+            var PERCENTAGE_BKG_DOWN = 0.65;
+
+			// This variables are with respect the left area between canvas and chart area:
+            var PERCENTAGE_TITLE = 0.25;
+            var PERCENTAGE_SUBTITLE = 0.15;
+            
+            // Labels are respect with REFERENCE_VALUE_LABEL:
+            var PERCENTAGE_AXIS_NUMBER_LABEL = 0.12;
+            var PERCENTAGE_AXIS_LABEL  = 0.20;
+            var PERCENTAGE_FOOTER = 0.20;
+            var PERCENTAGE_AXIS_Y_DISTANCE_LABEL = 2.0;
+    		
+    		var SPLIT_POSITION_SCALE_X = 1;
+    		var SPLIT_POSITION_SCALE_Y = 1;
+    		
+    		/*********************************************************
+    		 *
+    		 * Values obtained from WHO page. 
+    		 *
+    		 *********************************************************/
+    		
+    		var AXIS_X_VALUES = [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60];
+    		var AXIS_Y_VALUES = [75, 80, 85, 90, 95, 100, 105, 110, 115, 120];
+    
+    		var PER3_X = [
+    					
+    					[24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+    					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    				];
+    				
+    		var PER3_Y = [
+    					
+    					[79.6, 80.4, 81.2, 81.9, 82.6, 83.4, 84, 84.7, 85.4, 86, 86.7, 87.3, 87.9, 88.5, 89.1, 89.7, 90.3, 90.8, 91.4, 92, 92.5, 93, 93.6, 94.1, 94.6, 95.1, 95.7, 96.2, 96.7, 97.2, 97.6, 98.1, 98.6, 99.1, 99.6, 100, 100.5], 
+    					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    				];
+    				
+    		var PER15_X = [
+    					
+    					[24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+    					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    				];
+    				
+    		var PER15_Y = [
+    					
+    					[82.4, 83.2, 84, 84.8, 85.5, 86.3, 87, 87.7, 88.4, 89.1, 89.8, 90.5, 91.1, 91.7, 92.4, 93, 93.6, 94.2, 94.8, 95.4, 96, 96.6, 97.2, 97.7, 98.3, 98.8, 99.4, 99.9, 100.4, 101, 101.5, 102, 102.5, 103, 103.5, 104, 104.5], 
+    					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    				];
+    				
+    		var PER50_X = [
+    					
+    					[24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+    					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    				];
+    				
+    		var PER50_Y = [
+    					
+    					[85.7, 86.6, 87.4, 88.3, 89.1, 89.9, 90.7, 91.4, 92.2, 92.9, 93.6, 94.4, 95.1, 95.7, 96.4, 97.1, 97.7, 98.4, 99, 99.7, 100.3, 100.9, 101.5, 102.1, 102.7, 103.3, 103.9, 104.5, 105, 105.6, 106.2, 106.7, 107.3, 107.8, 108.4, 108.9, 109.4], 
+    					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    				];
+    			
+    		var PER85_X = [
+    					
+    					[24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+    					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    				];
+    				
+    		var PER85_Y = [
+    					
+    					[89.1, 90, 90.9, 91.8, 92.7, 93.5, 94.3, 95.2, 95.9, 96.7, 97.5, 98.3, 99, 99.7, 100.5, 101.2, 101.9, 102.6, 103.3, 103.9, 104.6, 105.3, 105.9, 106.6, 107.2, 107.8, 108.4, 109.1, 109.7, 110.3, 110.9, 111.5, 112.1, 112.6, 113.2, 113.8, 114.4], 
+    					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    				];
+    				
+    		var PER97_X = [
+    					
+    					[24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+    					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    				];
+    				
+    		var PER97_Y = [
+    					
+    					[91.8, 92.8, 93.7, 94.6, 95.6, 96.4, 97.3, 98.2, 99, 99.8, 100.6, 101.4, 102.2, 103, 103.7, 104.5, 105.2, 106, 106.7, 107.4, 108.1, 108.8, 109.5, 110.2, 110.8, 111.5, 112.1, 112.8, 113.4, 114.1, 114.7, 115.3, 116, 116.6, 117.2, 117.8, 118.4], 
+    					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    				];
+    				
+    		/*********************************************************
+    		 *
+    		 * inputVariables store values from querystring. 
+    		 *
+    		 *********************************************************/
+    		
+    		var inputValues = ["age", "0", "length", "0"];
+    		
+    		/*********************************************************
+    		 *
+    		 * Variables which must be calculated, 
+    		 * depending of canvas size. 
+    		 *
+    		 *********************************************************/
+    		
+    		var NO_DRAWING_AREA_X_LEFT = 0;
+    		var NO_DRAWING_AREA_X_RIGHT = 0;
+    		var NO_DRAWING_AREA_Y_UP = 0;
+    		var NO_DRAWING_AREA_Y_DOWN = 0;
+    		 
+    		var C_ORIGIN_X = 0;
+    		var C_ORIGIN_Y = 0; 
+    		
+    		var C_DELTA_X = 0;
+    		var C_DELTA_Y = 0;
+    		
+    		var SCALE_X_1 = 0;
+    		var SCALE_X_N = 0;
+    		var SCALE_Y_1 = 0;
+    		var SCALE_Y_N = 0;
+    		
+    		var REFERENCE_VALUE_LABEL = 0;
+    	
+			initialize();
+ 
+            function initialize() {
+                
+                // Register an event listener to
+                // call the resizeCanvas() function each time
+                // the window is resized.
+                window.addEventListener('resize', resizeCanvas, false);
+                
+                // Get variables from querystring:
+                getUrlVars();
+               
+                resizeCanvas();
+            }
+            
+            function getUrlVars() {
+            
+			    var hashes = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&");	
+			    var hash;
+			    var pos = 0;
+			    
+			    for(var i = 0; i < hashes.length; i++){
+			   
+			        hash = hashes[i].split("=");	
+			        pos = inputValues.indexOf(hash[0].trim());
+			       
+			        if(pos >= 0)
+			        	inputValues[++pos] = hash[1];
+			    }
+
+			}
+			
+			function getUrlVarValue(indicator){
+			
+				return inputValues[inputValues.indexOf(indicator) + 1];
+			
+			}
+       
+            // Runs each time the DOM window resize event fires.
+            // Resets the canvas dimensions to match window,
+            // then draws the new borders accordingly.
+            function resizeCanvas() {
+            
+            	// Establish initial size:
+                htmlCanvas.width = PERCENTAGE_CANVAS_SIZE * window.innerWidth;
+                htmlCanvas.height = PERCENTAGE_CANVAS_SIZE * window.innerHeight;
+                
+                // Establish blank area:
+                NO_DRAWING_AREA_X_LEFT = PERCENTAGE_CHART_LEFT * htmlCanvas.width;
+                NO_DRAWING_AREA_X_RIGHT = PERCENTAGE_CHART_RIGHT * htmlCanvas.width;
+                NO_DRAWING_AREA_Y_UP = PERCENTAGE_CHART_UP * htmlCanvas.height;
+                NO_DRAWING_AREA_Y_DOWN = PERCENTAGE_CHART_DOWN * htmlCanvas.height;
+                
+                // Establish reference value to draw labels:
+                REFERENCE_VALUE_LABEL = 5 * (NO_DRAWING_AREA_Y_UP * PERCENTAGE_BKG_UP) / 2;
+                
+               	// Establish chart origin:
+				C_ORIGIN_X = NO_DRAWING_AREA_X_LEFT;
+				C_ORIGIN_Y = htmlCanvas.height - NO_DRAWING_AREA_Y_DOWN;
+				
+				// Calculate the increments:
+				C_DELTA_X = (htmlCanvas.width - NO_DRAWING_AREA_X_LEFT - NO_DRAWING_AREA_X_RIGHT) / (AXIS_X_VALUES.length);
+				C_DELTA_Y = (htmlCanvas.height - NO_DRAWING_AREA_Y_UP - NO_DRAWING_AREA_Y_DOWN) / (AXIS_Y_VALUES.length - 1);
+                
+                // Calculate scales:
+                SCALE_X_1 = C_DELTA_X / (AXIS_X_VALUES[SPLIT_POSITION_SCALE_X] - AXIS_X_VALUES[SPLIT_POSITION_SCALE_X - 1]);
+                SCALE_Y_1 = C_DELTA_Y / (AXIS_Y_VALUES[SPLIT_POSITION_SCALE_Y] - AXIS_Y_VALUES[SPLIT_POSITION_SCALE_Y - 1]);
+                SCALE_X_N = C_DELTA_X / (AXIS_X_VALUES[SPLIT_POSITION_SCALE_X + 1] - AXIS_X_VALUES[SPLIT_POSITION_SCALE_X]);
+                SCALE_Y_N = C_DELTA_Y / (AXIS_Y_VALUES[SPLIT_POSITION_SCALE_Y + 1] - AXIS_Y_VALUES[SPLIT_POSITION_SCALE_Y]);
+                
+                // Calculate canvas x points:
+                getCanvasPositionX(PER3_X);
+                getCanvasPositionX(PER15_X);
+                getCanvasPositionX(PER50_X);
+                getCanvasPositionX(PER85_X);
+                getCanvasPositionX(PER97_X);
+                
+                // Calculate canvas y points:
+                getCanvasPositionY(PER3_Y);
+                getCanvasPositionY(PER15_Y);
+                getCanvasPositionY(PER50_Y);
+                getCanvasPositionY(PER85_Y);
+                getCanvasPositionY(PER97_Y);
+                
+               	// Redraw the chart:
+               	redraw();
+            }
+            
+            function getCanvasPositionX(structure) {
+            
+            	for(var i=0; i<structure.length; i+=2) {
+            	
+            		for(var j=0; j<structure[i].length; j++) {
+            		
+            			if (structure[i][j] > AXIS_X_VALUES[SPLIT_POSITION_SCALE_X])
+            				structure[i + 1][j] = canvasXn(structure[i][j]);
+            				
+            			else
+            				structure[i + 1][j] = canvasX1(structure[i][j]);
+            		}
+            	}
+            }
+            
+            function getCanvasPositionY(structure) {
+            
+            	for(var i=0; i<structure.length; i+=2) {
+            	
+            		for(var j=0; j<structure[i].length; j++) {
+            		
+            			if (structure[i][j] > AXIS_Y_VALUES[SPLIT_POSITION_SCALE_Y])
+            				structure[i + 1][j] = canvasYn(structure[i][j]);
+            				
+            			else
+            				structure[i + 1][j] = canvasY1(structure[i][j]);
+            		}
+            	}
+            }
+            
+            function canvasY1(pointY) {
+            	return htmlCanvas.height - NO_DRAWING_AREA_Y_DOWN - SCALE_Y_1*(pointY - AXIS_Y_VALUES[SPLIT_POSITION_SCALE_Y - 1]) ;
+            }
+            
+            function canvasYn(pointY) {
+            	return htmlCanvas.height - NO_DRAWING_AREA_Y_DOWN - C_DELTA_Y - SCALE_Y_N*(pointY - AXIS_Y_VALUES[SPLIT_POSITION_SCALE_Y]);
+            }
+            
+            function canvasX1(pointX) {
+            	return NO_DRAWING_AREA_X_LEFT + SCALE_X_1*(pointX - AXIS_X_VALUES[SPLIT_POSITION_SCALE_X - 1]) ;
+            }
+            
+            function canvasXn(pointX) {
+            	return NO_DRAWING_AREA_X_LEFT + C_DELTA_X + SCALE_X_N*(pointX - AXIS_X_VALUES[SPLIT_POSITION_SCALE_X]);
+            }
+            
+            function drawAxis_y(lineColor, lineWidth, labelColor, labelFont, mod) {
+            
+            	// Prepare canvas:
+            	contextCanvas.strokeStyle = lineColor;
+                contextCanvas.lineWidth = lineWidth;
+            	contextCanvas.beginPath();
+            
+            	// Get axis x points:
+            	for(var x=0; x <= AXIS_X_VALUES[AXIS_X_VALUES.length - 1] - AXIS_X_VALUES[0]; x++){
+            	
+            		// Calcute actual point:
+            		var pPointX = AXIS_X_VALUES[0] + x;
+            	
+            		// Get canvas point:
+            		var cPointX = pPointX > AXIS_X_VALUES[SPLIT_POSITION_SCALE_X] ? canvasXn(pPointX) : canvasX1(pPointX);
+            		
+            		// Paint axis x labels:
+            		if (x % mod == 0){
+            		
+            			contextCanvas.font = '' + (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_NUMBER_LABEL) + 'px ' + labelFont;
+            			contextCanvas.fillStyle = labelColor; 
+            			contextCanvas.fillText(pPointX, cPointX, C_ORIGIN_Y + (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_NUMBER_LABEL));
+            		}
+            		
+            		contextCanvas.moveTo(cPointX, C_ORIGIN_Y);
+            		contextCanvas.lineTo(cPointX, NO_DRAWING_AREA_Y_UP);
+            	}
+            	 
+            	// Draw actual lines:
+				contextCanvas.stroke();
+            }
+            
+            function drawAxis_x(lineColor, lineWidth, labelColor, labelFont, mod) {
+            	
+            	// Prepare canvas:
+            	contextCanvas.strokeStyle = lineColor;
+                contextCanvas.lineWidth = lineWidth;
+                contextCanvas.beginPath();
+            
+            	// Get axis y points:
+            	for(var y=0; y <= AXIS_Y_VALUES[AXIS_Y_VALUES.length - 1] - AXIS_Y_VALUES[0]; y++){
+            	
+            		// Calcute actual point:
+            		var pPointY = AXIS_Y_VALUES[0] + y;
+            		
+            		// Get canvas point:
+            		var cPointY = pPointY > AXIS_Y_VALUES[SPLIT_POSITION_SCALE_Y] ? canvasYn(pPointY) : canvasY1(pPointY);
+            		
+            		// Paint axis y labels:
+            		if (y % mod == 0){
+            		
+            			contextCanvas.font = '' + (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_NUMBER_LABEL) + 'px ' + labelFont;
+            			contextCanvas.fillStyle = labelColor;
+            			contextCanvas.textBaseline = 'middle'; 
+            			contextCanvas.fillText(pPointY, C_ORIGIN_X - PERCENTAGE_AXIS_Y_DISTANCE_LABEL * C_DELTA_X, cPointY);
+            			
+            			// Paint label to the right side:
+            			contextCanvas.fillText(pPointY, htmlCanvas.width - NO_DRAWING_AREA_X_RIGHT + 0.10*C_DELTA_X, cPointY);
+            		}
+            	
+            		contextCanvas.moveTo(C_ORIGIN_X, cPointY);
+            		contextCanvas.lineTo(htmlCanvas.width - NO_DRAWING_AREA_X_RIGHT - C_DELTA_X, cPointY);
+            	}
+            
+            	// Draw actual lines:
+				contextCanvas.stroke();
+            }
+            
+            function drawChart(lineColor, lineWidth, pointsX, pointsY, curveLabel, labelColor, labelFont) {
+            	
+            	contextCanvas.strokeStyle = lineColor;
+            	contextCanvas.lineWidth = lineWidth;
+            	contextCanvas.beginPath();
+            	
+            	contextCanvas.moveTo(pointsX[1][0], pointsY[1][0]);
+            	
+            	for(var i=1; i<pointsX[1].length; i++) {
+            	
+            		contextCanvas.lineTo(pointsX[1][i], pointsY[1][i]);
+            		contextCanvas.moveTo(pointsX[1][i], pointsY[1][i]);
+            	}
+            	
+            	contextCanvas.stroke();
+            	
+            	contextCanvas.font = '' + (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_NUMBER_LABEL) + 'px ' + labelFont;
+	  			contextCanvas.fillStyle = labelColor; 
+	  			contextCanvas.fillText(curveLabel, 
+	  				pointsX[1][pointsX[1].length - 1] + (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_NUMBER_LABEL/4), 
+	  				pointsY[1][pointsY[1].length - 1]);
+            }
+            
+            function decorateChart(backgroundColor, foreColor) {
+           
+            	// Draw background color first:
+            	contextCanvas.fillStyle = backgroundColor;
+            	contextCanvas.fillRect(
+            		NO_DRAWING_AREA_X_LEFT * (1 - PERCENTAGE_BKG_LEFT), 
+            		
+            		NO_DRAWING_AREA_Y_UP * (1 - PERCENTAGE_BKG_UP),
+            		 
+					htmlCanvas.width - 
+					(NO_DRAWING_AREA_X_RIGHT * (1 - PERCENTAGE_BKG_RIGHT)) - 
+					(NO_DRAWING_AREA_X_LEFT * (1- PERCENTAGE_BKG_LEFT)),
+					 
+					htmlCanvas.height - 
+					(NO_DRAWING_AREA_Y_DOWN * (1 - PERCENTAGE_BKG_DOWN)) - 
+					(NO_DRAWING_AREA_Y_UP * (1 - PERCENTAGE_BKG_UP))
+					
+				);
+            
+            	// Then fore color which is going to be the chart area:
+            	contextCanvas.fillStyle = foreColor;
+            	contextCanvas.fillRect(	
+            		NO_DRAWING_AREA_X_LEFT,
+            		NO_DRAWING_AREA_Y_UP,
+            		htmlCanvas.width - NO_DRAWING_AREA_X_RIGHT - NO_DRAWING_AREA_X_LEFT, 
+            		htmlCanvas.height - NO_DRAWING_AREA_Y_DOWN - NO_DRAWING_AREA_Y_UP);
+            }
+            
+            function drawTitle(title, colorTitle, subTitle, colorSubTitle, fontName) {
+            	
+            	// Draw Title:
+            	contextCanvas.font = '' + (NO_DRAWING_AREA_Y_UP * PERCENTAGE_TITLE) + 'px ' + fontName;
+            	contextCanvas.fillStyle = colorTitle; 
+            	contextCanvas.fillText(title, NO_DRAWING_AREA_X_LEFT, (NO_DRAWING_AREA_Y_UP * (1 - PERCENTAGE_BKG_UP))/2);
+            	
+            	// Draw subtitle:
+            	contextCanvas.font = '' + (NO_DRAWING_AREA_Y_UP * PERCENTAGE_SUBTITLE) + 'px ' + fontName;
+            	contextCanvas.fillStyle = colorSubTitle; 
+            	contextCanvas.fillText(subTitle, 
+            		NO_DRAWING_AREA_X_LEFT, 
+            		(NO_DRAWING_AREA_Y_UP * (1 - PERCENTAGE_BKG_UP))/2 + (NO_DRAWING_AREA_Y_UP * PERCENTAGE_TITLE)
+            	);
+            }
+            
+            function drawAxis_x_Label(label, labelColor, fontName) {
+            
+            	contextCanvas.font = '' + (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_LABEL) + 'px ' + fontName;
+            	contextCanvas.fillStyle = labelColor; 
+            	contextCanvas.fillText(label, 
+            		(htmlCanvas.width - NO_DRAWING_AREA_X_LEFT - NO_DRAWING_AREA_X_RIGHT) / 3,
+            		htmlCanvas.height - (NO_DRAWING_AREA_Y_DOWN * (1 - PERCENTAGE_BKG_DOWN)) - (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_LABEL));
+            
+            }
+            
+            function drawAxis_y_Label(label, labelColor, fontName) {
+            
+            	var cx = NO_DRAWING_AREA_X_LEFT * (1 - PERCENTAGE_BKG_LEFT) + (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_LABEL);
+            	var cy = 2 * (htmlCanvas.height - NO_DRAWING_AREA_Y_DOWN) / 3;
+            	
+            	// Save current context canvas:
+            	contextCanvas.save();
+            	
+            	// Translate and rotate current canvas:
+            	contextCanvas.translate(cx, cy);
+            	contextCanvas.rotate(270*Math.PI/180);
+            	
+            	contextCanvas.font = '' + (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_LABEL) + 'px ' + fontName;
+            	contextCanvas.fillStyle = labelColor; 
+            	contextCanvas.fillText(label, 0, 0);
+            
+            	// Restore last context canvas:
+            	contextCanvas.restore();
+            	
+            }
+            
+            function drawFooter(label, labelColor, fontName) {
+            
+            	// Display footer text:
+            	contextCanvas.font = '' + (REFERENCE_VALUE_LABEL * PERCENTAGE_FOOTER) + 'px ' + fontName;
+            	contextCanvas.fillStyle = labelColor; 
+            	contextCanvas.fillText(label, 
+            		NO_DRAWING_AREA_X_LEFT,
+            		htmlCanvas.height - (REFERENCE_VALUE_LABEL * PERCENTAGE_FOOTER));
+            
+            }
+            
+            function drawInputPoint(pPointX, pPointY, lineColor, lineWidth, label, labelColor, fontName) {
+            
+            	if(pPointX >= AXIS_X_VALUES[0] && pPointX <= AXIS_X_VALUES[AXIS_X_VALUES.length - 1] && 
+            		pPointY >= AXIS_Y_VALUES[0] && pPointY <= AXIS_Y_VALUES[AXIS_Y_VALUES.length - 1]){
+            	
+            		contextCanvas.fillStyle = lineColor; 
+	            	contextCanvas.strokeStyle = lineColor;
+	            	contextCanvas.lineWidth = lineWidth;
+	            	contextCanvas.beginPath();
+	            	
+	            	// Get Canvas point:
+	            	var cPointX = pPointX > AXIS_X_VALUES[SPLIT_POSITION_SCALE_X] ? canvasXn(pPointX) : canvasX1(pPointX);
+	            	var cPointY = pPointY > AXIS_Y_VALUES[SPLIT_POSITION_SCALE_Y] ? canvasYn(pPointY) : canvasY1(pPointY);
+	            	
+	            	contextCanvas.moveTo(cPointX, cPointY);
+	            	contextCanvas.lineTo(cPointX, htmlCanvas.height - NO_DRAWING_AREA_Y_DOWN);
+	            	
+	            	contextCanvas.moveTo(cPointX, cPointY);
+	            	contextCanvas.lineTo(NO_DRAWING_AREA_X_LEFT, cPointY);
+	            	
+	            	contextCanvas.stroke();
+	            	
+	            	contextCanvas.arc(cPointX, cPointY, 3, 0, 2*Math.PI);
+	            	contextCanvas.fill();
+	            	
+	            	// Display current input point:
+	            	contextCanvas.font = '' + (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_LABEL) + 'px ' + fontName;
+	            	contextCanvas.fillStyle = labelColor; 
+	            	contextCanvas.fillText(label, 
+	            		NO_DRAWING_AREA_X_LEFT,
+	            		NO_DRAWING_AREA_Y_UP - (REFERENCE_VALUE_LABEL * PERCENTAGE_AXIS_LABEL));
+	            		
+            	}
+            	else
+            	    alert("Valores fuera de rango.");
+            		
+            }
+            
+            function redraw() {
+                
+                contextCanvas.strokeStyle = 'blue';
+                contextCanvas.lineWidth = '0.5';
+                contextCanvas.strokeRect(0, 0, htmlCanvas.width, htmlCanvas.height);
+                
+                // Draw background and fore color:
+                decorateChart(BKGCOLOR_CHART, FORE_COLOR_CHART);
+                
+                // Write title, subtitle and footer:
+                drawTitle('Estatura para la edad Ni&ntilde;as', BKGCOLOR_CHART, 'Percentiles (2 a 5 a&ntilde;os)', 'black', 'Arial');
+                drawFooter('Patrones de crecimiento infantil de la OMS', '#000000', 'Arial');
+                
+                // Draw axis:
+                drawAxis_x('#5B5B5B', '0.3', '#FFFFFF', 'Arial', 5);
+                drawAxis_x_Label('Edad (meses cumplidos)', '#FFFFFF', 'Arial');
+                drawAxis_y('#5B5B5B', '0.3', '#FFFFFF', 'Arial', 4);
+                drawAxis_y_Label('Estatura (cm)', '#FFFFFF', 'Arial');
+                
+                // Draw charts:
+                drawChart('red', '0.8', PER3_X, PER3_Y, '3', 'red', 'Arial');
+                drawChart('#FFC90E', '0.8', PER15_X, PER15_Y, '15', '#FFC90E', 'Arial');                
+                drawChart('green', '0.8', PER50_X, PER50_Y, '50', 'green', 'Arial');
+                drawChart('#FFC90E', '0.8', PER85_X, PER85_Y, '85', '#FFC90E', 'Arial');
+                drawChart('red', '0.8', PER97_X, PER97_Y, '97', 'red', 'Arial');
+                
+                // Finally draw the given point:
+                drawInputPoint(parseFloat(getUrlVarValue("age")), parseFloat(getUrlVarValue("length")), '#000000', '1', 
+                	'Edad: ' + getUrlVarValue("age") + ' meses / ' + 'Longitud: ' + getUrlVarValue("length") + ' cm', 
+                	'#FFFFFF', 'Arial');
+            }
+    		
+    	})();
+	</script>
+</body>
+</html>

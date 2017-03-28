@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="encyclopedias" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9a95a8c4-160f-47e9-98cf-77240b54cf9b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nameEncyclopedia" class="java.lang.String"/>
+	<field name="attributeName" class="java.lang.String"/>
+	<field name="content" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="12" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<image>
+				<reportElement x="20" y="8" width="123" height="59" uuid="60cabeae-5a02-4ad3-a599-90f6c0088baa"/>
+				<imageExpression><![CDATA["/resources/images/logoPLM.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="165" y="19" width="231" height="42" uuid="8fd3f5c4-44e6-4003-9406-8473bc107d70"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nameEncyclopedia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="66" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="20" y="33" width="522" height="30" uuid="23bb039f-3870-448b-af6c-640b28797084"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{content}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="4" width="522" height="29" uuid="7b6f845d-fa97-45bf-b3db-bcd8258ef68e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{attributeName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="453" y="6" width="99" height="20" uuid="5797f3a0-a206-4727-9640-c2ca5ee9ec37"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

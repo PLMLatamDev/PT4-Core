@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contraindication" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4c2b7814-7aeb-42ea-93bc-a2ff18ceb5c1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["WEB-INF/lib/jasper/clinical-report/"]]></defaultValueExpression>
+	</parameter>
+	<field name="description" class="java.lang.String"/>
+	<field name="icdContraindicationsDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="pharmaGroupDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="physiologicalDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="hypersensibilityDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="activeSubstanceDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="otherDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="commentDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="24">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="23" forecolor="#FFFFFF" backcolor="#000000" uuid="4841d8ae-45a3-4e46-8845-ab1a369e7315"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="58" splitType="Stretch">
+			<rectangle>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="555" height="37" forecolor="#CCCCCC" uuid="a680b7df-267f-46ec-9aa9-8f4ddf8b9ae1"/>
+			</rectangle>
+			<subreport>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="555" height="37" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="e234419f-80a6-4501-972e-1d1eca167e81"/>
+				<dataSourceExpression><![CDATA[$F{icdContraindicationsDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ICDContraindication.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="-1" width="555" height="21" backcolor="#CCCCCC" uuid="5b6a8761-2d61-48ca-8d35-ff64351fe27b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{icdContraindicationsDS} != null?"CIE - 10":""]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="58">
+			<rectangle>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="555" height="38" forecolor="#CCCCCC" uuid="c34271e7-46ea-460a-a5a2-31c78e889a14"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="20" width="555" height="38" uuid="90b28702-7435-471c-8ade-83ae203c1358"/>
+				<dataSourceExpression><![CDATA[$F{pharmaGroupDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "PharmacologicalGroupContraindications.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="a6e71e43-d3cc-4af1-aad9-575d180efb7e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pharmaGroupDS}!=null?"GRUPO FARMACOLÓGICO":""]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="59">
+			<rectangle>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="555" height="39" forecolor="#CCCCCC" uuid="c5ec9402-d47c-4d02-a7e3-95a85a1caf5c"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="20" width="555" height="39" uuid="eff3a7a2-63e6-418f-a8eb-733df97d5c9e"/>
+				<dataSourceExpression><![CDATA[$F{physiologicalDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "PhysiologicalContraindications.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="70ffaf8b-54a1-4110-be60-b97add775954"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{physiologicalDS}!=null?"FISIOLÓGICAS":""]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="58">
+			<rectangle>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="555" height="38" forecolor="#CCCCCC" uuid="91b615af-2546-4ea8-83f2-7848e0cc727b"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="20" width="555" height="38" uuid="30002e1d-af12-4ac9-b47f-e60f4ee88014"/>
+				<dataSourceExpression><![CDATA[$F{hypersensibilityDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "HypersensibilityContraindications.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="f69e145b-a3c6-4575-b380-cc57b79c24e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{hypersensibilityDS}!=null?"HIPERSENSIBILIDAD":""]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="61">
+			<rectangle>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="555" height="41" forecolor="#CCCCCC" uuid="aae8e2c6-0fdf-4566-801f-b85845bd2b5e"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="20" width="555" height="41" uuid="df062d38-9801-4d9a-9479-8ae48987818a"/>
+				<dataSourceExpression><![CDATA[$F{activeSubstanceDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ActiveSubstanceContraindications.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="975c2b2b-88fb-4a88-bf89-e427073f989a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{activeSubstanceDS}!=null?"SUSTANCIAS ACTIVAS":""]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="59">
+			<rectangle>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="555" height="39" forecolor="#CCCCCC" uuid="045d43a0-7f1b-42c0-89fa-338d48f67717"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="20" width="555" height="39" uuid="84586bf4-cad1-4129-a00d-31b30d57e411"/>
+				<dataSourceExpression><![CDATA[$F{otherDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OtherContraindications.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="4cfc27ce-2e81-41a1-a5a4-02f09e27209f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{otherDS}!=null?"OTRAS":""]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="61">
+			<rectangle>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="555" height="40" forecolor="#CCCCCC" uuid="a4afb60d-cc00-4491-bdb9-488ac1fa1765"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="20" width="555" height="40" uuid="a744a875-62b8-4f0f-82a8-d9281c203e9b"/>
+				<dataSourceExpression><![CDATA[$F{commentDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ContraindicationComments.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="235a86a0-201e-478f-afb5-e7656d84db75"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{commentDS}!=null?"Comentarios":""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

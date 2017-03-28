@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prescription" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4076e756-afbc-4cea-b814-b71e0dd36c03">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="67"/>
+	<parameter name="DoctoName" class="java.lang.String"/>
+	<parameter name="Speciality" class="java.lang.String"/>
+	<parameter name="ProfessionalLicense" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="PatientName" class="java.lang.String"/>
+	<parameter name="PatientLastName" class="java.lang.String"/>
+	<parameter name="Years" class="java.lang.Integer"/>
+	<parameter name="Weight" class="java.lang.Double"/>
+	<parameter name="Height" class="java.lang.Long"/>
+	<parameter name="HeartRate" class="java.lang.Long"/>
+	<parameter name="RespiratoryRate" class="java.lang.Long"/>
+	<parameter name="BloodPressure" class="java.lang.String"/>
+	<parameter name="Recommendations" class="java.lang.String"/>
+	<parameter name="printingDate" class="java.lang.String"/>
+	<field name="substancesInString" class="java.lang.String"/>
+	<field name="presentation" class="java.lang.String"/>
+	<field name="brand" class="java.lang.String"/>
+	<field name="dose" class="java.lang.String"/>
+	<field name="time" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<image>
+				<reportElement mode="Opaque" x="0" y="0" width="208" height="87" uuid="aae05664-e158-4c82-bbcd-62cda415a73b"/>
+				<imageExpression><![CDATA["resources/images/LogoReceta.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="331" y="67" width="190" height="20" uuid="f28da649-ee7e-4d5c-91e2-14f1140b3852"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{printingDate}==null?"Fecha: "+new java.util.Date():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="297" y="47" width="224" height="20" uuid="cd20a7a3-8ce1-4678-877b-3c7f98eb1977"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{printingDate}==null?"":"Fecha de reimpresión: "+new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="225" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="268" height="225" forecolor="#999999" uuid="fd441aab-e581-4523-b1fb-3b93fd42aa4b"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="268" y="0" width="287" height="225" forecolor="#666666" uuid="5630ec9a-4b50-4eb0-9609-5ebb5a56b3bb"/>
+			</rectangle>
+			<line>
+				<reportElement x="38" y="33" width="467" height="1" forecolor="#999999" uuid="d64414f9-b949-4af5-8716-ead8cb77517c"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="38" y="13" width="140" height="20" forecolor="#666666" uuid="6e1f46bb-5d9e-4221-920d-bd99b88bd6a4"/>
+				<textElement>
+					<font size="14" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Datos del Médico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="381" y="13" width="140" height="20" forecolor="#666666" uuid="0e2b08b6-a8e4-4df5-9786-3e870abf3e74"/>
+				<textElement>
+					<font size="14" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Datos del Paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="46" width="55" height="20" uuid="dd72462e-4a20-4fbc-86be-fa22563a551a"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="79" width="79" height="20" uuid="6a20b0e6-ee64-4f0c-a5f9-9feeb8ed1f80"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Especialidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="111" width="44" height="20" uuid="2cc01289-ff26-44ad-a7ee-a59cce03c11e"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Cédula:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="12" y="142" width="55" height="20" uuid="83e838c4-f109-40ea-9c0e-307e3406953f"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="281" y="46" width="100" height="20" uuid="12a57499-1af8-4bed-955d-98296bcd5106"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="281" y="79" width="36" height="20" uuid="d9930a0e-5884-4f80-90c6-5945bd7b9e32"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Edad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="79" width="60" height="20" uuid="7e5cdc90-7239-406b-b92e-1901c8f59e98"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Peso (Kg):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="453" y="79" width="61" height="20" uuid="2c952839-a11f-4cea-b5a0-f9a582f4fe3d"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Talla (cm):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="281" y="111" width="162" height="20" uuid="f0750548-5fb4-4b8f-b431-9218b6b18bff"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Frecuencia Cardiaca (l.p.m) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="281" y="142" width="182" height="20" uuid="9529e533-6d6e-4a3d-9c6d-6f76a9e26219"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Frecuencia Respiratoria (r.p.m):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="281" y="173" width="144" height="20" uuid="303d5b5e-2e73-4c1e-8342-db9db3cba4ac"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Presión Arterial (mmHg):]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="67" y="46" width="191" height="20" uuid="64ec9ed5-2bb5-4be6-85c0-c9e7e313a8ab"/>
+				<textFieldExpression><![CDATA[$P{DoctoName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="91" y="79" width="167" height="20" uuid="891d3695-060c-4852-9b86-0644ac33a520"/>
+				<textFieldExpression><![CDATA[$P{Speciality}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="56" y="111" width="202" height="20" uuid="6aa23ef5-ae23-459a-9536-c96e947c722f"/>
+				<textFieldExpression><![CDATA[$P{ProfessionalLicense}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="12" y="162" width="246" height="52" uuid="ebcc5933-73c0-4dbe-9fe6-15078b2a5989"/>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="331" y="46" width="212" height="20" uuid="f2eb7517-78c0-4739-afd0-75ea97eb44fc"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PatientName}+" "+$P{PatientLastName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="463" y="173" width="80" height="20" uuid="669053e6-13c3-4c77-a78e-4c55aa60018e"/>
+				<textFieldExpression><![CDATA[$P{BloodPressure}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="463" y="111" width="80" height="20" uuid="1eb72a2b-7cc5-4d02-9110-6489e0a1e70b"/>
+				<textFieldExpression><![CDATA[$P{HeartRate}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="514" y="79" width="41" height="20" uuid="e8904344-12f5-47cd-94a9-a50827c09fb5"/>
+				<textFieldExpression><![CDATA[$P{Height}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="463" y="142" width="80" height="20" uuid="2c87e0c3-2b55-4644-bfb3-0272437a0232"/>
+				<textFieldExpression><![CDATA[$P{RespiratoryRate}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="317" y="79" width="38" height="20" uuid="004026e0-dd47-4bb5-a6b2-e5b2f4dc1a0b"/>
+				<textFieldExpression><![CDATA[$P{Years}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="79" width="39" height="20" uuid="f0e05f2c-bf1d-4de6-bed0-b5f3231927f1"/>
+				<textFieldExpression><![CDATA[$P{Weight}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="93" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="555" height="93" forecolor="#999999" uuid="9ccee464-fcda-40bc-9f9a-8cb70a9ce74d"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="12" y="7" width="529" height="20" isRemoveLineWhenBlank="true" uuid="3e20217a-77d8-4cc7-9f67-6fcca734e297"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{substancesInString}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="12" y="47" width="529" height="20" uuid="339fc61b-b9a9-45b6-bdbb-0f9beb32a437"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{presentation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="12" y="27" width="529" height="20" uuid="f9216d2b-8605-429a-bd7f-98fb6bd52a81"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{brand}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="12" y="67" width="529" height="20" uuid="abfa452f-f069-4982-9cd5-d03a5138784c"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dose} +", durante "+ $F{time}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="186" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="2" width="555" height="84" forecolor="#999999" uuid="5dd0e766-eca3-4c66-81b3-28a71a858c8b"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="30" width="178" height="1" forecolor="#999999" uuid="90f03938-8d5e-4ae1-8bfe-d219751add97"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="12" y="10" width="178" height="20" forecolor="#666666" uuid="de84c151-c27f-4b50-8540-490ed42168a1"/>
+				<textElement>
+					<font size="14" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Notas / Recomendaciones]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="37" width="531" height="44" uuid="0d7eaf2f-6da3-445c-be12-c55b2228bd71"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Recommendations}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="178" y="125" width="153" height="1" uuid="bea498ef-91d7-4dc9-94d0-6e7cb6c1a0e5"/>
+			</line>
+			<staticText>
+				<reportElement x="234" y="125" width="47" height="20" uuid="a0dbf8cd-a140-4bd9-8374-0e8aaf79ba20"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Firma.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="12" y="166" width="256" height="20" uuid="9214fc82-742b-4b0d-aafc-a4307c94a621"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{printingDate}==null?"":"Fecha de impresión: "+$P{printingDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

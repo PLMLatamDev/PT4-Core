@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<import resource="classpath:WEB-INF/lib/PT4DAO-Config.xml"/>
+	<bean id="beanGeneralSettings" class="com.plm.pt4.mvc.bean.BeanGeneralSettings" >
+		
+		<!-- Configuración de componentes -->
+		<property name="countryIdPharma" value="11"></property>
+		<property name="countryIdClients" value="1"></property>
+<!-- 	<property name="editionId" value="132"></property> -->
+		<property name="editionId" value="132"></property>
+		<property name="targetId" value="2"></property>
+		<property name="sourceId" value ="2"></property>
+		<property name="informationTypeId" value="3"></property>
+		<property name="informationTypeNews" value="1"></property>
+		<property name="valuePubMed" value="8"></property>
+		<property name="resolutionKey" value="320"></property>
+		<property name="logEntityId" value="27"></property>
+		<property name="logNewsEntityId" value="5"></property>
+		<property name="logPubMedEntityId" value="58"></property>
+		<property name="logGPCEntityId" value="19"></property>
+		<property name="logSearchTypeId" value="1"></property>
+		<property name="logSourceId" value="2"></property>
+		<property name="deviceId" value="1"></property>
+		<property name="hwIdentifier" value="1"></property>
+		
+		<!-- Configuración Receta y Reporte-->
+		<property name="medicalPrescription" value="true"></property>
+		<property name="clinicalReport" value="false"></property>
+		<property name="clinicalReportType" value="1"></property>
+		<property name="companyClientInfo">
+		  <map>
+		   <entry key="active" value="true"></entry>
+		   <entry key="companyClient" value="PLM"></entry>
+		   <entry key="companyClientId" value="50"></entry>
+		  </map>
+		</property>
+		
+		
+		<property name="codeDefault" value="F9L46EHIJ7"></property>
+<!-- 		<property name="codeDefault" value="ZP1L733PUE"></property> -->
+		<property name="country" value="MEX"></property>
+		<property name="prefix" value="PLMMEXPT4PHFREE"></property>
+<!-- 		<property name="prefix" value="PLMPT3USOPLM"></property> -->
+		<property name="isbn" value="E-ENCICLOPEDIA 2014"></property>
+		<property name="isbnMed" value= "eAMIS"></property>
+<!-- 		<property name="urlPLMLogs" value="http://www.plmconnection.com/plmservices/RestPLMLogsEngine/RestPLMLogsEngine.svc/"></property> -->
+		<property name="urlPLMLogs" value="http://187.237.235.54/RestPLMLogsEngine/RestPLMLogsEngine.svc/"></property>
+		
+		
+		<!-- Configuración secciones App -->
+		<property name="interacciones">
+			<map>
+				<entry key="prescription" value="true"></entry>
+				<entry key="im" value="true"></entry>
+				<entry key="ddi" value="true"></entry>
+				<entry key="ima" value="true"></entry>
+				<entry key="con" value="true"></entry>
+				<entry key="ddd" value="false"></entry>
+				<entry key="ifq" value="false"></entry>
+				<entry key="re" value="false"></entry>
+				<entry key="dt" value="false"></entry>
+			</map>
+		</property>
+		<property name="guideClinic" value="false"></property>
+		<property name="calculadoras" value="true"></property>
+		<property name="atlas" value="false"></property>
+		<property name="abstratcs" value="false"></property>
+		<property name="pubmed" value="true"></property>
+		<property name="recursos" value="true"></property>
+		<property name="eLearning" value="true"></property>
+		
+		<property name="encyclopedias" value="false"></property>
+		<property name="icd" value="true"></property>
+		<property name="atc" value="true"></property>
+		<property name="prescription" value="true"></property>
+		<property name="farmacovigilancia" value="true"></property>
+		<property name="urlPharmacovigilancia" value="http://187.237.235.54/micrositios/farmacovigilancia/#/farmacovigilancia/"></property>
+		
+		
+		<!-- Configuración de las columnas del grid Productos -->
+		<property name="countryCodes" value="false"></property>
+		<property name="colPrice" value="false"></property>
+		<property name="colBarCode" value="false"></property>
+		
+		<!-- Configuración componentes App-->
+		<property name="publicity" value="false"></property>
+		<property name="carouselInterval" value="3000"></property>
+		<property name="carouselActive" value="false"></property>
+		<property name="catCarouselActive" value="false"></property>
+		<property name="carouselWrap" value="true"></property>
+		
+		<!-- Configuracion sesion -->
+		<property name="sesionTime" value="5"></property>
+		<property name="typeLogin" value="4"></property>
+		<property name="profesionId" value="7"></property>
+		
+		<!-- Limite de sesiones -->
+		<property name="sessionLimit" value="1"></property>
+		
+		<property name="urlEmailActive" value="http://localhost/pt4-master/"></property>
+<!-- 		<property name="urlEmailActive" value="http://www.prescripciontotal.com/consultorio/login/activacion-satisfactoria?code="></property> -->
+		
+	
+		  <property name="distribution">
+			  <map>
+			   <entry key="distributionId" value="74"></entry>
+			   <entry key="targetId" value="2"></entry>
+			   <entry key="countryId" value="1"></entry>
+			  </map>
+		</property>
+		
+		
+	</bean> 
+	
+	<bean id="beanCodePrefix" class="com.plm.pt4.mvc.bean.BeanCodePrefix" scope="session" >
+	   <aop:scoped-proxy/>
+	 </bean> 
+	
+</beans>

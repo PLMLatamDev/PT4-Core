@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DrugInteractions" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="40390047-ad84-401a-9cec-400e2ae12bcb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/WEB-INF/lib/jasper/clinical-report/"]]></defaultValueExpression>
+	</parameter>
+	<field name="brand" class="java.lang.String"/>
+	<field name="activeSubstance" class="java.lang.String"/>
+	<field name="pharmaForm" class="java.lang.String"/>
+	<field name="divisionShortName" class="java.lang.String"/>
+	<field name="colorSemaphore" class="java.lang.String"/>
+	<field name="referencesDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="164" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="2e8632dd-6d63-46dd-91bf-40e1c9942b81"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN MEDICAMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="164" y="0" width="391" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="c881ce9b-496c-44c3-a041-5fd99f6ab48c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN MEDICAMENTO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="100">
+			<rectangle>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="555" height="100" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="8b3a7c03-4800-4003-bb80-dcdded38fc9f">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="164" height="100" uuid="430310c4-9c62-43bb-a593-e78c62dc2e39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{brand}+"\n"+$F{activeSubstance}+"\n"+$F{pharmaForm}+"\n"+$F{divisionShortName}+"\n Gravedad \n"+$F{colorSemaphore}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement stretchType="RelativeToTallestObject" x="166" y="0" width="378" height="100" isPrintWhenDetailOverflows="true" uuid="44d31952-1495-4f1f-b495-30c7e9fc3ae2"/>
+				<dataSourceExpression><![CDATA[$F{referencesDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "DrugInteractions_references.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

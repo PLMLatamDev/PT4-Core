@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clinicalReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a2fa2a62-f225-4bb7-83cc-37674d2ae148">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="grupo" uuid="501e9015-ecc3-469b-9b5b-69850b64539e">
+		<field name="groupName" class="java.lang.String"/>
+		<field name="activeSubstance" class="java.lang.String"/>
+		<field name="brand" class="java.lang.String"/>
+		<field name="pharmaForm" class="java.lang.String"/>
+		<field name="IPharmacologicalGroupsDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	</subDataset>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/WEB-INF/lib/jasper/clinical-report/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="expedient" class="java.lang.String"/>
+	<parameter name="nameComplete" class="java.lang.String"/>
+	<parameter name="weigth" class="java.lang.Integer"/>
+	<parameter name="heigth" class="java.lang.Double"/>
+	<parameter name="birthday" class="java.lang.Integer"/>
+	<parameter name="comments" class="java.lang.String"/>
+	<field name="brand" class="java.lang.String"/>
+	<field name="pharmaForm" class="java.lang.String"/>
+	<field name="substancesDescription" class="java.lang.String"/>
+	<field name="interactionsubstancesDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="IPharmacologicalGroupsDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="IMealDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="contraindicationDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="therapeuticDoublenessDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="drugInteractionDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="121" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement stretchType="RelativeToTallestObject" x="155" y="43" width="400" height="73" forecolor="#CCCCCC" backcolor="#FFFFFF" uuid="56f40da8-b0fe-4add-82f9-45abbd611831"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="203" height="29" uuid="1c2e4390-0dd9-456d-b7b9-671c566b427a"/>
+				<textElement>
+					<font size="16" pdfFontName="Helvetica-BoldOblique" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Clinico]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="394" y="14" width="161" height="20" uuid="f8885260-44a5-4400-9a19-253dac4b5519"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="354" y="14" width="40" height="20" uuid="c6b4e393-15cf-4757-bdec-a925a6b0f2d3"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="232" y="52" width="323" height="20" uuid="043738f8-6186-4885-a5c9-87328f030725"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{expedient}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="232" y="72" width="323" height="20" uuid="1d6e5195-020d-4a5c-bf53-37ba17a4788f"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nameComplete}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="371" y="92" width="65" height="20" uuid="a0bd59b1-66a9-4ec4-a10a-d64da17b4dac"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{heigth}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="232" y="92" width="58" height="20" isRemoveLineWhenBlank="true" uuid="39e7aaaa-ef55-45e7-8782-3e518b2d0355"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{weigth}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="484" y="92" width="71" height="20" uuid="78ba1416-f069-41ed-b959-e01565633bd8"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{birthday}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="448" y="92" width="36" height="20" uuid="245ce494-9368-447a-9d0b-133e77281e2d"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Edad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="92" width="75" height="20" uuid="76db0277-7a1d-491f-9594-5186b5af7b69"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Estatura (m):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="92" width="60" height="20" uuid="c46a122b-1a3e-4907-b638-4d91d0fbc767"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Peso (Kg):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="72" width="60" height="20" uuid="da08c357-86fb-4be2-b1b0-2f0ba6d96bde"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="52" width="60" height="20" uuid="6ec93726-18de-4f15-b37f-d6442a37a499"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Expediente:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="44" width="150" height="72" uuid="9cefd568-b0bc-4513-b12c-048871f4b60d"/>
+				<imageExpression><![CDATA["/resources/images/pt-4.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="124">
+			<textField>
+				<reportElement x="0" y="21" width="555" height="20" uuid="65aab000-70a0-42c4-b94f-100a3d5c72ea"/>
+				<textElement>
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{substancesDescription}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="290" y="1" width="265" height="20" uuid="b0d46603-1756-4b7c-94e0-7f7ff06b5c4b"/>
+				<textElement>
+					<font pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pharmaForm}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="1" width="290" height="20" isRemoveLineWhenBlank="true" uuid="c604f642-a361-46da-8f0b-a6ca36dca182"/>
+				<textElement>
+					<font size="12" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{brand}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" forecolor="#CCCCCC" uuid="787b9a14-6a1a-4d14-abf0-9d475dcadcba"/>
+			</line>
+			<staticText>
+				<reportElement x="8" y="41" width="528" height="20" uuid="6ead7dac-2850-4be5-acd9-78e7a4b474ca"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Interacciones Medicamentosas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="66" width="81" height="20" uuid="31489e88-4c9a-470c-a3b3-56e1509b4d5b"/>
+				<text><![CDATA[Por Sustancia:]]></text>
+			</staticText>
+			<subreport isUsingCache="false">
+				<reportElement stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="0" y="90" width="555" height="34" isRemoveLineWhenBlank="true" uuid="608a0c72-3806-448e-accf-5dfa47ee5081"/>
+				<dataSourceExpression><![CDATA[$F{interactionsubstancesDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "InteractionSubstances.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="65">
+			<subreport>
+				<reportElement stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="0" y="29" width="555" height="36" isRemoveLineWhenBlank="true" uuid="6d8a85f9-1328-498b-b688-9cc25a755fa4"/>
+				<dataSourceExpression><![CDATA[$F{IPharmacologicalGroupsDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "IPharmacologicalGroups.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="8" y="3" width="528" height="20" uuid="da0a340c-4f11-4455-9b04-87b35db59dd4"/>
+				<text><![CDATA[Por Grupo Farmacológico:]]></text>
+			</staticText>
+		</band>
+		<band height="70">
+			<subreport>
+				<reportElement isPrintRepeatedValues="false" x="0" y="31" width="555" height="38" isRemoveLineWhenBlank="true" uuid="a4a57e29-9548-4f7c-91c0-d6085481e34d"/>
+				<dataSourceExpression><![CDATA[$F{IMealDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "IMeal.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="8" y="5" width="528" height="20" uuid="1b823f2f-dd95-4448-8300-b7d14d56991d"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Interacciones con Alimentos:]]></text>
+			</staticText>
+		</band>
+		<band height="70">
+			<subreport>
+				<reportElement x="0" y="30" width="555" height="37" uuid="6c42c8a0-e36b-4d19-aa49-203e466ad2c2"/>
+				<dataSourceExpression><![CDATA[$F{contraindicationDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Contraindication.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="8" y="5" width="528" height="20" uuid="bbbd6918-3111-4954-bbfc-d5da31cea9a5"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Contraindicaciones:]]></text>
+			</staticText>
+		</band>
+		<band height="76">
+			<subreport>
+				<reportElement x="0" y="33" width="555" height="39" uuid="da0ef952-f90e-4e3e-baa2-5f5b89a58099"/>
+				<dataSourceExpression><![CDATA[$F{therapeuticDoublenessDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TherapeuticDoubleness.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="8" y="7" width="528" height="20" uuid="e88ee5d1-57c3-4b51-b2a6-246ab8cab57a"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Duplicidad Terapéutica:]]></text>
+			</staticText>
+		</band>
+		<band height="79">
+			<subreport>
+				<reportElement x="0" y="34" width="555" height="38" uuid="94fc4223-f35b-4cd3-890f-904a78f5294e"/>
+				<dataSourceExpression><![CDATA[$F{drugInteractionDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "DrugInteractions.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="8" y="8" width="528" height="20" uuid="30965515-519c-4cb2-8522-63e8d5444333"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Interacción Medicamento - Medicamento:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="73">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="555" height="71" forecolor="#CCCCCC" uuid="2ab68d38-c263-4800-93c2-80edd1716766"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="19" width="136" height="1" forecolor="#CCCCCC" uuid="104d1ad7-6b21-4324-a6b1-2e103caaaad3"/>
+			</line>
+			<staticText>
+				<reportElement x="8" y="0" width="128" height="20" uuid="0a7be8a2-4970-40f5-95c3-b6882345b1ad"/>
+				<textElement>
+					<font size="11" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Comentarios generales:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="8" y="23" width="528" height="48" uuid="154c1322-dfbb-4da7-b572-bc5d242d6303"/>
+				<textFieldExpression><![CDATA[$P{comments}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>

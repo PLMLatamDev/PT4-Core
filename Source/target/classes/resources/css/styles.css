@@ -1,0 +1,710 @@
+.display_loader {
+	display: none; 
+    position: fixed;
+    background-color: rgba(255, 255, 255, 1);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    opacity: 0.8;
+    z-index: 1000;
+}
+.display_loader i:FIRST-CHILD{
+	    color: #3a6f9f;
+    font-size: 50px;
+    margin: 20% auto;
+}
+.display_loader span{
+	    font-size: 26px;
+    color: #103556;
+}
+
+.preloader-box{
+ margin: 25%; text-align: center;
+
+ }
+ 
+.icon-search-engine{
+	width:30%;
+}
+
+.menu-toggle{
+	cursor:pointer;
+}
+
+
+#form-search{
+	width:60%;
+	float:left;
+}
+
+#icon-responsive-user{
+  display:none;
+  float:right;
+  color:#ffffff;
+}
+
+.menu-header{
+	background-color:#122b5a !important;
+}
+
+.fa-menu{
+	color:#ffffff;
+}
+
+ .margen-header{
+  	min-height: 1%;
+ }
+ 
+ .container-general{
+ 	width:100%;	
+ }
+ 
+ /* START Autocomplete JQUERY UI*/
+
+ .ui-autocomplete-category {
+    font-weight: bold;
+    margin-left: 15px;
+    line-height: 1.5;
+    color: #044072;
+    font-size: 14px;
+    padding: 5px;
+  }
+
+
+
+ .ui-widget-content
+ {
+    overflow-x: auto;
+  /*max-width: 560px;*/
+  text-align: left;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  background-clip: padding-box;
+  max-height: 350px;
+  overflow-y:auto; 
+  }
+
+
+.ui-menu .ui-menu-item a.ui-corner-all:hover, .ui-menu .ui-menu-item a.ui-corner-all:focus, .ui-menu .ui-menu-item a.ui-corner-all:active {
+    background:#ff8a00!important;
+    color:#000;
+    border-radius:0;
+	
+}
+
+.ui-menu-item{
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #868b95;
+ /* white-space: nowrap;*/
+  font-size: 12px;
+  margin-left: 25px;
+  cursor:pointer;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    background: #0099d1;
+    border: none;
+    color:#000;
+    border-radius:0;
+    font-weight: normal;
+}
+
+/* END Autocomplete JQUERY UI*/
+
+ /**************
+ 	Home 
+ **************/
+ 
+ .home-logo{
+    text-align:center;
+}
+
+#img-logo{
+	max-width:100%;
+	height: auto;
+    width: auto\9; /*IE8*/
+    margin-top:15%;
+}
+ 
+.fa-drugs{
+	background-image:url(../images/menu/buscador_de_medicamentos.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-drugs:hover{
+	background-image:url(../images/menu/buscador_de_medicamentos_over.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-substances{
+	background-image:url(../images/menu/kit_reactivos.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-substances:hover{
+	background-image:url(../images/menu/kit_reactivos_over.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+
+.fa-prescription{
+	background-image:url(../images/menu/interacciones_medicamentosas.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-prescription-white{
+	background-image:url(../images/menu/interacciones_medicamentosas_over.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-divisions{
+	background-image:url(../images/menu/companias_participantes.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-divisions:hover{
+	background-image:url(../images/menu/companias_participantes_over.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-guides{
+	background-image:url(../images/menu/herramientas.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-guides:hover{
+	background-image:url(../images/menu/herramientas_over.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-cie{
+	background-image:url(../images/menu/imagenologia_y_radiodiagnostico.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-cie:hover{
+	background-image:url(../images/menu/imagenologia_y_radiodiagnostico_over.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-atc{
+	background-image:url(../images/menu/analisis_clinicos.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+.fa-atc:hover{
+	background-image:url(../images/menu/analisis_clinicos_over.png);
+	background-repeat:no-repeat;
+	width:20px;
+    background-size: contain;
+    max-height: 23px;
+    float: left;
+    height: 25px;
+    margin-right: 3%;
+}
+
+
+
+a.plm-menu{
+	height: 44px !important;
+}
+a.plm-menu:hover{
+	height: 44px !important;
+}
+
+.title-module{
+	margin-bottom:0%;
+}
+
+
+
+#banner-down-horizontal{
+	background-color: #dcdde2;
+	display: initial;
+}
+
+.icon-publicity{
+	width: 15%;
+	height: 100px; 
+}
+/*************
+	PUBMED
+*************/
+
+#logo-pubmed {
+    width: 70%;
+    height: 350px;
+    background-color: transparent;
+    margin-top: 10%;
+    margin-left: 10%;
+    color: #002E6C;
+    font-weight: bold;
+    font-size: 120px;
+    font: tahoma;
+}
+ 
+ /************
+     Detail
+ ************/
+ mark {
+  background:#F3F01E !important;
+  color: inherit;
+  padding: 0;
+}
+
+ .col-detail-attribute{
+    text-decoration: none;
+    width: 100%;
+    display: inherit;
+    padding: 3px 0px;
+    margin-top: 4px;
+    background-color: #f4f4f4;
+    text-align: left;
+    cursor:pointer;
+    text-align:justify;
+}
+
+.img-menu-search{
+	width: 75px;
+    margin-top: -5px;
+}
+
+.botonera-detail,.menu-detail{
+	float:right;
+	text-align: right;
+}
+
+.txt-attribute{
+	width:100%;
+}
+
+/**********************
+	Interacciones
+***********************/
+
+.title-redirec{
+	color:#3a6f9f ;
+	text-decoration:underline;
+	font-weight:bold;
+}
+
+.title-redirec:hover{
+	color:#3a6f9f ;
+	text-decoration:underline;
+	font-weight:bold;
+}
+
+.dd-prescription{
+	margin-left: 250px !important;
+	font-family:Verdana,Arial,sans-serif;
+	font-size: 11px;
+}
+	
+.box-body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 7px;
+}
+
+#tableHeader {
+    background-color: #3a6f9f;
+    color: #FFF;
+    font-weight: 600;
+}
+
+.renglon {
+    width: 100%;
+    height: auto;
+    float: left;
+    border-bottom: #FFF 3px solid;
+    display: table;
+}
+
+.gris1 {
+    background-color: #efefef;
+}
+
+.gris2 {
+    background-color: #ecf0f5;
+}
+
+.interaction-red{
+	background-color:#f08080;
+	color:#ffffff;
+}
+
+a.interaction-red{
+	background-color:#f08080 !important;
+	color:#ffffff !important;
+}
+
+
+.tab-7 {
+    width: 10.5%;
+    height: auto;
+    border-left: 2px solid #FFF;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 6px;
+}
+
+.tab-8 {
+    width: 11.5%;
+    height: auto;
+    border-left: 2px solid #FFF;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 6px;
+}
+
+.col-del{
+	width: 2.2%;	
+}
+
+.tab-1,.tab-pubmed-1{
+    width: 99.5%;
+    height: auto;
+    border-left: 2px solid #FFF;
+    font-size: 12px;
+    text-align: justify;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 6px 15px;
+}
+
+.tab-pubmed-1{
+	padding:15px 15px;
+}
+
+.tab-9,.tab-9-guides{
+    width: 3.5%;
+    height: auto;
+    border-left: 2px solid #FFF;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 6px 0;
+}
+
+.tab-9-guides{
+	text-align: justify;
+	padding-left:1%;
+}
+
+.tab-6,.tab-6-guides {
+    width: 16.5%;
+    height: auto;
+    border-left: 2px solid #FFF;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 6px 0;
+}
+
+.tab-9-guides,.tab-6-guides {
+	text-align: justify;
+	padding-left:1%;
+}
+
+.tab-5 {
+    width: 19.5%;
+    height: auto;
+    border-left: 2px solid #FFF;
+    font-size: 80%;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 6px 0;
+}
+
+.tab-10 {
+    width: 8.5%;
+    height: auto;
+    border-left: 2px solid #FFF;
+    font-size: 80%;
+    text-align: justify;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 6px 0;
+}
+
+
+.head {
+    font-size: 13px !important;
+}
+
+@keyframes latidos {
+    from { transform: none; }
+    50% { transform: scale(1.1); }
+    to { transform: none; }
+}
+
+.latidos{
+	animation: latidos 1.6s infinite;
+}
+
+
+
+
+/**************
+	Medias Querys
+**************/
+
+
+@media (max-width: 767px){
+	
+	 #tableHeader	.head {
+	 	display: none !important;
+	 }
+	 
+	.renglon .first {
+	    background-color: #3c8dbc;
+	    font-weight: bold;
+	    color: #fff;
+	}
+	
+	.title-redirec{
+		color:#FFFFFF;
+		text-decoration:underline;
+		font-weight:bold;
+	}
+	
+	.title-redirec:hover{
+		color:#FFFFFF;
+		text-decoration:underline;
+		font-weight:bold;
+	}
+	
+	.dd-prescription{
+		margin-left: 0px !important;
+		font-family:Verdana,Arial,sans-serif;
+		font-size: 11px;
+	}
+	
+	.tab-1 {
+    	width: 100% !important;
+    	display: block !important;
+    	border-bottom: 2px solid #FFF !important;
+    	text-align:center;
+   	}
+   	
+	.tab-10 {
+    	width: 100% !important;
+    	display: block !important;
+    	border-bottom: 2px solid #FFF !important;
+   	}
+	
+	.tab-9,.tab-9-guides,.tab-6-guides {
+    	width: 100% !important;
+    	display: block !important;
+    	border-bottom: 2px solid #FFF !important;
+    	text-align: center;
+   	}
+   	   	
+   	
+	.tab-8 {
+    	width: 100% !important;
+    	display: block !important;
+    	border-bottom: 2px solid #FFF !important;
+   	}
+   	.tab-5 {
+    	width: 100% !important;
+    	display: block !important;
+    	border-bottom: 2px solid #FFF !important;
+   	}
+   	.tab-6{
+	    width: 100% !important;
+	    display: block !important;
+	    border-bottom: 2px solid #FFF !important;
+	}
+	.tab-7{
+	    width: 100% !important;
+	    display: block !important;
+	    border-bottom: 2px solid #FFF !important;
+	}
+	
+	.icon-publicity{
+		width: 15%;
+		height: 100px; 
+	}
+}
+
+@media only screen and (min-width : 320px) {
+	
+	
+	.icon-publicity{
+		width: 60%;
+		height: 100px; 
+	}
+	
+	.notifications-menu{
+		width:35px;
+	}
+
+}
+
+@media only screen and (min-width : 480px) {
+	.tab-8 {
+	    width: 19.5%;
+	    height: auto;
+	    border-left: 2px solid #FFF;
+	    font-size: 10px;
+	    text-align: center;
+	    vertical-align: middle;
+	    display: table-cell;
+	    padding: 10px;
+	    word-wrap: break-word !important;
+	}
+	
+	.col-del{
+		width: 3%;	
+	}
+		
+	
+	.icon-publicity{
+		width: 50%;
+		height: 100px; 
+	}
+}
+
+@media only screen and (min-width : 992px) {
+	.tab-8 {
+	    width: 17%;
+	    height: auto;
+	    border-left: 2px solid #FFF;
+	    font-size: 11px;
+	    text-align: center;
+	    vertical-align: middle;
+	    display: table-cell;
+	    padding: 6px;
+	}
+	
+	.tab-7 {
+	    width: 10.5%;
+	    height: auto;
+	    border-left: 2px solid #FFF;
+	    font-size: 11px;
+	    text-align: center;
+	    vertical-align: middle;
+	    display: table-cell;
+	    padding: 6px;
+	}
+	
+	.col-del{
+		width: 2.5%;	
+	}
+	
+	.icon-publicity{
+		width: 15%;
+		height: 100px; 
+	}
+	
+}
+
+

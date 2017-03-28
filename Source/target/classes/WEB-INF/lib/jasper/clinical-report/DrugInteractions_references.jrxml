@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DrugInteractions_references" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="42391f56-8b91-4393-8fa3-48d91d1d8987">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="clinicalReference" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="11" y="0" width="371" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="c53490eb-1f6b-434c-8532-4b37f30bda2b"/>
+				<textFieldExpression><![CDATA["°"+$F{clinicalReference}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

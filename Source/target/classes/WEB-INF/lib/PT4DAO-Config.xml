@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="PT4Services"
+    	class="com.plmlatina.dao.config.PT4ServicesConfig">
+    	
+<!-- 		<property name="urlMetadataService" value="http://www.plmconnection.com/plmservices/RestMetadataEngine/RestMetadataEngine.svc/" /> -->
+<!-- 		<property name="urlPharmaSearchService" value="http://www.plmconnection.com/plmservices/RestPharmaSearchEngine/RestPharmaSearchEngine.svc/" /> -->
+<!-- 		<property name="urlPLMClientsService" value="http://www.plmconnection.com/plmservices/RestPLMClientsEngine/RestPLMClientsEngine.svc/" /> -->
+<!-- 		<property name="urlPLMContraindicationsService" value="http://www.plmconnection.com/plmservices/RestPLMContraindicationsEngine/RestPLMContraindicationsEngine.svc/"/> -->
+<!-- 		<property name="urlPLMInteractionsService" value="http://www.plmconnection.com/plmservices/RestPLMInteractions/RestInteractions.svc/"/> -->
+<!-- 		<property name="urlPLMUtilitiesService" value="http://www.plmconnection.com/plmservices/RestPLMUtilitiesEngine/RestPLMUtilitiesEngine.svc/"></property> -->
+<!-- 		<property name="urlDoseEngineService" value="http://www.plmconnection.com/plmservices/RestDoseEngine/RestDoseEngine.svc/"></property> -->
+<!-- 		<property name="urlIncompatibilitiesService" value="http://www.plmconnection.com/plmservices/RestIncompatibilitiesEngine/RestIncompatibilitiesEngine.svc/"></property> -->
+<!-- 		<property name="urlPregnancyRiskService" value="http://www.plmconnection.com/plmservices/RestPregnancyRiskEngine/RestPregnancyRiskEngine.svc/"></property> -->
+<!--     	<property name="urlTherapeuticDoublenessService" value="http://www.plmconnection.com/plmservices/RestTherapeuticDoublenessEngine/RestTherapeuticDoublenessEngine.svc/"></property> -->
+    	
+    	<property name="urlMetadataService" value="http://187.237.235.54/RestMetadataEngine/RestMetadataEngine.svc/" />
+		<property name="urlPharmaSearchService" value="http://187.237.235.54/RestPharmaSearchEngine/RestPharmaSearchEngine.svc/" />
+		<property name="urlPLMClientsService" value="http://187.237.235.54/RestPLMClientsEngine/RestPLMClientsEngine.svc/" />
+		<property name="urlPLMContraindicationsService" value="http://187.237.235.54/RestPLMContraindicationsEngine/RestPLMContraindicationsEngine.svc/"/>
+		<property name="urlPLMInteractionsService" value="http://187.237.235.54/RestPLMInteractions/RestInteractions.svc/"/>
+		<property name="urlPLMUtilitiesService" value="http://187.237.235.54/RestPLMUtilitiesEngine/RestPLMUtilitiesEngine.svc/"></property>
+		<property name="urlDoseEngineService" value="http://187.237.235.54/RestDoseEngine/RestDoseEngine.svc/"></property>
+		<property name="urlIncompatibilitiesService" value="http://187.237.235.54/RestIncompatibilitiesEngine/RestIncompatibilitiesEngine.svc/"></property>
+		<property name="urlPregnancyRiskService" value="http://187.237.235.54/RestPregnancyRiskEngine/RestPregnancyRiskEngine.svc/"></property>
+		<property name="urlTherapeuticDoublenessService" value="http://187.237.235.54/RestTherapeuticDoublenessEngine/RestTherapeuticDoublenessEngine.svc/"></property>
+    	
+    </bean>
+
+
+
+    <bean id="serviceMetadataDAO" class="com.plmlatina.dao.service.ServiceMetadataDAO" autowire="constructor" />
+ 	<bean id="managerMetadata" class="com.plmlatina.dao.manager.ManagerMetadata" autowire="constructor" />
+ 	
+ 	<bean id="pharmaSearchDAO" class="com.plmlatina.dao.service.ServicePharmaSearchDAO" autowire="constructor" />
+ 	<bean id="managerPharmaSearch" class="com.plmlatina.dao.manager.ManagerPharmaSearch" autowire="constructor" />
+ 	
+ 	<bean id="plmClientsDAO" class="com.plmlatina.dao.service.ServicePLMClientsDAO" autowire="constructor" />
+ 	<bean id="managerPLMClients" class="com.plmlatina.dao.manager.ManagerPLMClients" autowire="constructor" />
+ 	
+    <bean id="plmContraindicationsDAO" class="com.plmlatina.dao.service.ServicePLMContraindicationsDAO" autowire="constructor" />
+ 	<bean id="managerPLMContraindications" class="com.plmlatina.dao.manager.ManagerPLMContraindications" autowire="constructor" />
+ 	
+ 	<bean id="plmInteractionsDAO" class="com.plmlatina.dao.service.ServicePLMInteractionsDAO" autowire="constructor" />
+ 	<bean id="managerPLMInteractions" class="com.plmlatina.dao.manager.ManagerPLMInteractions" autowire="constructor" />
+ 	
+ 	<bean id="selectedDrugsDAO" class="com.plmlatina.dao.service.ServiceSelectedDrugsDAO" autowire="constructor" />
+ 	<bean id="managerSelectedDrugs" class="com.plmlatina.dao.manager.ManagerSelectedDrugs" autowire="constructor" />
+ 	
+ 	<bean id="servicePLMUtilitiesDAO" class="com.plmlatina.dao.service.ServicePLMUtilitiesDAO" autowire="constructor" />
+ 	<bean id="managerPLMUtilities" class="com.plmlatina.dao.manager.ManagerPLMUtilities" autowire="constructor" />
+ 	
+ 	<bean id="serviceDoseEngineDAO" class="com.plmlatina.dao.service.ServiceDoseEngineDAO" autowire="constructor" />
+ 	<bean id="managerDoseEngine" class="com.plmlatina.dao.manager.ManagerDoseEngine" autowire="constructor" />
+ 	
+ 	<bean id="serviceIncompatibilitiesDAO" class="com.plmlatina.dao.service.ServiceIncompatibilitiesServiceDAO" autowire="constructor" />
+ 	<bean id="managerIncompatibilities" class="com.plmlatina.dao.manager.ManagerIncompatibilitiesService" autowire="constructor" />
+ 	
+ 	<bean id="servicePregnancyRiskDAO" class="com.plmlatina.dao.service.ServicePregnancyRiskDAO" autowire="constructor" />
+ 	<bean id="managerPregnancyRisk" class="com.plmlatina.dao.manager.ManagerPregnancyRisk" autowire="constructor" />
+
+ 	<bean id="serviceTherapeuticDoublenessDAO" class="com.plmlatina.dao.service.ServiceTherapeuticDoublenessDAO" autowire="constructor" />
+ 	<bean id="managerTherapeuticDoubleness" class="com.plmlatina.dao.manager.ManagerTherapeuticDoubleness" autowire="constructor" />
+ 	
+</beans>

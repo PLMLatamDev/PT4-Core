@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TherapeuticDoubleness" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="54ed71d9-b39d-40a3-b4dd-fd99566ee1eb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/WEB-INF/lib/jasper/clinical-report/"]]></defaultValueExpression>
+	</parameter>
+	<field name="brandsDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="description" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="126" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="27d9595e-4e6d-45c2-934e-ee301d880b29"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Medicamento(s)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="126" y="0" width="429" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="edf4ab7a-219a-45d4-8b44-af9be9668c93"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[	ATC (OMS)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="0" width="100" height="20" uuid="9bb877cf-6900-4f81-bfd3-2cbe697b5a4c"/>
+				<text><![CDATA[description]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<rectangle>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="555" height="41" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="63c89a6b-a265-4a6a-ae71-4231c65162b2">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<subreport>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="126" height="39" uuid="87ff4d3e-5b2c-4f0f-a1ad-67e28cef6143"/>
+				<dataSourceExpression><![CDATA[$F{brandsDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TherapeuticDoubleness_brand.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="135" y="0" width="409" height="39" uuid="8b477c5b-f1c0-4197-a10f-b4a09ac9f20d"/>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

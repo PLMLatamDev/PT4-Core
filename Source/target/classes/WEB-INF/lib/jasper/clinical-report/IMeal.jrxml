@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IMeal" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8d63a6c9-8d6d-4d5b-a92d-a7d3f5838df4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/WEB-INF/lib/jasper/clinical-report/"]]></defaultValueExpression>
+	</parameter>
+	<field name="description" class="java.lang.String"/>
+	<field name="mealElementDescription" class="java.lang.String"/>
+	<field name="imaSeverity" class="java.lang.String"/>
+	<field name="clinicalSumary" class="java.lang.String"/>
+	<field name="clinicalReferencesDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="143" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="02a8764b-b632-4a74-9bfb-dfe78f12e695"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Sustancia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="143" y="0" width="412" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="034a81e2-c4a2-4c51-8e40-421f5d32631c"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Resumen / Referencias Clínicas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="69" splitType="Stretch">
+			<rectangle>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="555" height="68" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="f20aa425-98b9-4627-9ed2-29c585b83aa1">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="143" height="20" isRemoveLineWhenBlank="true" uuid="1f21b5d6-35e0-46a4-8148-16e996451dba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{description}+", "+$F{mealElementDescription}+"\n"+$F{imaSeverity}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="152" y="0" width="403" height="20" isPrintWhenDetailOverflows="true" uuid="8b43e322-71c1-41ae-9619-392fab3fb9c7"/>
+				<textFieldExpression><![CDATA[$F{clinicalSumary}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="false">
+				<reportElement stretchType="RelativeToTallestObject" x="143" y="26" width="412" height="42" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="3542be7c-1344-4f05-8e22-099227c9a2e9"/>
+				<dataSourceExpression><![CDATA[$F{clinicalReferencesDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "IclinicalReferences.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

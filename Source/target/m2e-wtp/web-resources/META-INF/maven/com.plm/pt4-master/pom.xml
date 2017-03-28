@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.plm</groupId>
+	<artifactId>pt4-master</artifactId>
+	<name>pt4-master</name>
+	<packaging>war</packaging>
+	<version>1.0.0-BUILD-SNAPSHOT</version>
+	
+	<properties>
+      <java-version>1.8</java-version>
+        <org.springframework-version>4.0.2.RELEASE</org.springframework-version>
+        <org.aspectj-version>1.7.4</org.aspectj-version>
+        <org.slf4j-version>1.7.5</org.slf4j-version>
+        <jackson.databind-version>2.2.3</jackson.databind-version>
+        <spring.security.version>3.2.0.RELEASE</spring.security.version>
+      <!--   <hibernate.validator.version>5.1.2.Final</hibernate.validator.version>
+        <javax.validation.version>1.1.0.Final</javax.validation.version>
+        
+        -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	  </properties>
+	  <dependencies>
+	  
+	  	<!-- PT4 -->
+		<dependency>
+          <groupId>com.plmlatina</groupId>
+          <artifactId>PT4BusinessEntities</artifactId>
+          <version>1.0.34</version>
+        </dependency>
+            
+        <dependency>
+          <groupId>com.plmlatina</groupId>
+          <artifactId>PT4DAO</artifactId>
+          <version>1.0.36</version>
+        </dependency>
+        
+        <!-- 		Acentos -->
+			<dependency>
+				<groupId>com.plmlatina</groupId>
+				<artifactId>AccentConverter</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+
+	  
+	   <!-- Jackson -->
+	        <dependency>
+	            <groupId>com.fasterxml.jackson.core</groupId>
+	            <artifactId>jackson-databind</artifactId>
+	            <version>${jackson.databind-version}</version>
+	        </dependency>
+	        <!-- Spring -->
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-context</artifactId>
+	            <version>${org.springframework-version}</version>
+	            <exclusions>
+	                <!-- Exclude Commons Logging in favor of SLF4j -->
+	                <exclusion>
+	                    <groupId>commons-logging</groupId>
+	                    <artifactId>commons-logging</artifactId>
+	                </exclusion>
+	            </exclusions>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-webmvc</artifactId>
+	            <version>${org.springframework-version}</version>
+	        </dependency>
+	        
+	 
+	        <!-- AspectJ -->
+	        <dependency>
+	            <groupId>org.aspectj</groupId>
+	            <artifactId>aspectjrt</artifactId>
+	            <version>${org.aspectj-version}</version>
+	        </dependency>
+	 
+	        <!-- Logging -->
+	        <dependency>
+	            <groupId>org.slf4j</groupId>
+	            <artifactId>slf4j-api</artifactId>
+	            <version>${org.slf4j-version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.slf4j</groupId>
+	            <artifactId>jcl-over-slf4j</artifactId>
+	            <version>${org.slf4j-version}</version>
+	            <scope>runtime</scope>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.slf4j</groupId>
+	            <artifactId>slf4j-log4j12</artifactId>
+	            <version>${org.slf4j-version}</version>
+	            <scope>runtime</scope>
+	        </dependency>
+	        <dependency>
+	            <groupId>log4j</groupId>
+	            <artifactId>log4j</artifactId>
+	            <version>1.2.15</version>
+	            <exclusions>
+	                <exclusion>
+	                    <groupId>javax.mail</groupId>
+	                    <artifactId>mail</artifactId>
+	                </exclusion>
+	                <exclusion>
+	                    <groupId>javax.jms</groupId>
+	                    <artifactId>jms</artifactId>
+	                </exclusion>
+	                <exclusion>
+	                    <groupId>com.sun.jdmk</groupId>
+	                    <artifactId>jmxtools</artifactId>
+	                </exclusion>
+	                <exclusion>
+	                    <groupId>com.sun.jmx</groupId>
+	                    <artifactId>jmxri</artifactId>
+	                </exclusion>
+	            </exclusions>
+	            <scope>runtime</scope>
+	        </dependency>
+	 
+	        <!-- @Inject -->
+	        <dependency>
+	            <groupId>javax.inject</groupId>
+	            <artifactId>javax.inject</artifactId>
+	            <version>1</version>
+	        </dependency>
+	 
+	        <!-- Servlet -->
+	        <dependency>
+	            <groupId>javax.servlet</groupId>
+	            <artifactId>servlet-api</artifactId>
+	            <version>2.5</version>
+	            <scope>provided</scope>
+	        </dependency>
+	        <dependency>
+	            <groupId>javax.servlet.jsp</groupId>
+	            <artifactId>jsp-api</artifactId>
+	            <version>2.1</version>
+	            <scope>provided</scope>
+	        </dependency>
+	        <dependency>
+	            <groupId>javax.servlet</groupId>
+	            <artifactId>jstl</artifactId>
+	            <version>1.2</version>
+	        </dependency>
+	        
+	        <!-- Tiles -->
+			<dependency>
+	        <groupId>org.apache.tiles</groupId>
+	        <artifactId>tiles-jsp</artifactId>
+	        <version>2.2.1</version>
+		    </dependency>
+		    <dependency>
+		        <groupId>org.apache.tiles</groupId>
+		        <artifactId>tiles-core</artifactId>
+		        <version>2.2.1</version>
+		        <scope>compile</scope>
+		    </dependency>
+		    <dependency>
+		        <groupId>org.apache.tiles</groupId>
+		        <artifactId>tiles-api</artifactId>
+		        <version>2.2.1</version>
+		        <scope>compile</scope>
+		    </dependency>
+		    <dependency>
+		        <groupId>org.apache.tiles</groupId>
+		        <artifactId>tiles-servlet</artifactId>
+		        <version>2.2.1</version>
+		    </dependency>
+		    <dependency>
+		        <groupId>org.apache.tiles</groupId>
+		        <artifactId>tiles-template</artifactId>
+		        <version>2.2.1</version>
+		    </dependency>
+		    
+		    <!-- validation -->
+		    <dependency>
+	            <groupId>javax.validation</groupId>
+	            <artifactId>validation-api</artifactId>
+	            <version>1.1.0.Final</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.hibernate</groupId>
+	            <artifactId>hibernate-validator</artifactId>
+	            <version>5.1.0.Final</version>
+	        </dependency>
+	        
+	        <dependency>
+			    <groupId>taglibs</groupId>
+			    <artifactId>standard</artifactId>
+			    <version>1.1.2</version>
+			</dependency>
+	        
+	        <!-- security  -->
+	        
+	        <dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+	
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+			
+			<!-- jasper reports  6.1.0, 3.7.6-->
+			<dependency>
+		    	<groupId>net.sf.jasperreports</groupId>
+		    	<artifactId>jasperreports</artifactId>
+		    	<version>6.1.0</version>
+		    	<type>jar</type>
+		    	<scope>compile</scope>
+		    	<exclusions>
+		    		<exclusion>
+		    			<artifactId>commons-collections</artifactId>
+		    			<groupId>commons-collections</groupId>
+		    		</exclusion>
+		    		<exclusion>
+		    			<artifactId>commons-beanutils</artifactId>
+		    			<groupId>commons-beanutils</groupId>
+		    		</exclusion>
+		    		<exclusion>
+		    			<artifactId>commons-digester</artifactId>
+		    			<groupId>commons-digester</groupId>
+		    		</exclusion>
+		    		<exclusion>
+		    			<artifactId>commons-logging</artifactId>
+		    			<groupId>commons-logging</groupId>
+		    		</exclusion>
+		    	</exclusions>
+		    </dependency>
+		    <dependency>
+		    	<groupId>commons-digester</groupId>
+		    	<artifactId>commons-digester</artifactId>
+		    	<version>2.1</version>
+		    	<type>jar</type>
+		    	<scope>compile</scope>
+		    </dependency>
+		    <dependency>
+		    	<groupId>commons-collections</groupId>
+		    	<artifactId>commons-collections</artifactId>
+		    	<version>3.2.1</version>
+		    	<type>jar</type>
+		    	<scope>compile</scope>
+		    </dependency>
+		    
+		    <dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-support</artifactId>
+			    <version>2.0.6</version>
+			</dependency>
+	 
+	  
+	  </dependencies>
+	  
+	  <build>
+	    <testSourceDirectory>src/main/test</testSourceDirectory>
+	    <resources>
+	      <resource>
+	        <directory>src/main/webapp</directory>
+	        <excludes>
+	          <exclude>**/*.java</exclude>
+	        </excludes>
+	      </resource>
+	    </resources>
+	    <plugins>
+	      <plugin>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>3.1</version>
+	        <configuration>
+	          <source>1.8</source>
+	          <target>1.8</target>
+	        </configuration>
+	      </plugin>
+	      <plugin>
+	        <artifactId>maven-war-plugin</artifactId>
+	        <version>2.4</version>
+	        <configuration>
+	          <failOnMissingWebXml>false</failOnMissingWebXml>
+	        </configuration>
+	      </plugin>
+	    </plugins>
+	  </build>
+	  
+	  <repositories>
+            <repository>
+                  <id>releases</id>
+                  <name>Releases</name>
+                  <url>http://195.192.2.19/nexus/content/repositories/releases</url>
+            </repository>
+      </repositories>
+	  
+	  
+	</project>
+	
+	
